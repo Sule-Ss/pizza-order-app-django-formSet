@@ -1,104 +1,15 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
 
-<style>
-  .size {
-  }
 
-  #id_size {
-    height: 2rem;
-    border: none;
-    outline: none;
-    padding: 5px;
-  }
+{% extends "pizza/base.html" %}
+{% load static %}
 
-  .sizeDiv {
-    padding: 1rem;
-    text-align: center;
-  }
 
-  .checkBox {
-    display: flex;
-  }
 
-  .checkBox label {
-    display: inline-block;
-  }
-
-  .checkBoxDiv {
-    text-align: center;
-  }
-</style>
-
-<link rel="stylesheet" href="{% static 'pizza/css/order.css' %}" />
-
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  <table>
-    <thead>
-      <caption>
-        Pizza Sipariş Formu
-      </caption>
-    </thead>
-    <tr>
-      <td class="sizeDiv" colspan="2">
-        <label for="" class="sizeLabel">Size :</label>
-        <span class="size">{{ form.size }}</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="checkBoxDiv" colspan="2">
-        <label for="" class="checkBoxLabel">Sauces :</label>
-        <span class="checkBox">{{ form.sauce.1 }}</span>
-        <span class="checkBox">{{ form.sauce.2 }}</span>
-        <span class="checkBox">{{ form.sauce.3 }}</span>
-        <span class="checkBox">{{ form.sauce.4 }}</span>
-        <span class="checkBox">{{ form.sauce.5 }}</span>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="secim"
-          >Pizza Türü <span style="color: yellow">*</span></label
-        >
-      </td>
-    </tr>
-    <tr>
-      <td id="Pizza1">
-        <label for="id_pizza_1"
-          ><img src="{% static 'pizza/img/pizza1.jpg' %}" alt="" /></label
-        ><br />
-        {{ form.pizza.1 }}
-      </td>
-      <td id="Pizza2">
-        <label for="id_pizza_2"
-          ><img src="{% static 'pizza/img/pizza2.jpg' %}" alt="" /></label
-        ><br />
-        {{ form.pizza.2 }}
-      </td>
-    </tr>
-
-    <tr>
-      <td id="Pizza3">
-        <label for="id_pizza_3"
-          ><img src="{% static 'pizza/img/pizza3.jpg' %}" alt="" /></label
-        ><br />
-        {{ form.pizza.3 }}
-      </td>
-
-      <td id="Pizza4">
-        <label for="id_pizza_4"
-          ><img src="{% static 'pizza/img/pizza4.jpg' %}" alt="" /></label
-        ><br />
-        {{ form.pizza.4 }}
-      </td>
-    </tr>
-
-    <tfoot>
-      <td id="button">
-        <button type="submit">gönder</button>
-      </td>
-    </tfoot>
-  </table>
-        <input type="submit" value="Sipariş Ver" />
-</form>
+{% block content %}
+<div>
+    <form action="{% url 'pizzas' %}">
+        <input type="number" name="number" id="number">
+        <input type="submit" value="Send">
+    </form>
+</div>
 {% endblock content %}
