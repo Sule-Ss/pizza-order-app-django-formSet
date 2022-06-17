@@ -1,54 +1,28 @@
-
-{% extends "pizza/base.html" %}
-
-
-{% block content %}
-    
-    
+{% extends "pizza/base.html" %} 
+{% block content %} 
 {% load crispy_forms_tags %}
 
 <form method="post">
-        {% csrf_token %}
-        
-        <div class="container  ">
-                <div class="row ">
-                        <div class="col  m-3 p-3">
-                                {{ pizzaFormSet.management_form }}
-                                {% for pizza in pizzaFormSet  %}
-                                        {{ pizza.id }}
-                                        {{ pizza | crispy }}
-                                        <hr>
-                                {% endfor %}
-                                        
-                        </div>
-                        <div class="col m-3 p-2">
-                                {{ sauceFormSet.management_form }}
-                                {% for sauce in sauceFormSet  %}
-                                        {{ sauce.id }}
-                                        {{ sauce | crispy }}
-                                        <hr>
-                                {% endfor %}
-                        </div>
-                </div>
-        </div>
+  {% csrf_token %}
 
-        
-        {% comment %}
-        {{ pizzaFormSet | crispy  }}
-        {{ sauceFormSet | crispy }}
-        {% endcomment %}
-                
+  <div class="container">
+    <div class="row">
+      <div class="col m-3 p-3">
+        {{ pizzaFormSet.management_form }} {% for pizza in pizzaFormSet %} {{
+        pizza.id }} {{ pizza | crispy }}
+        <hr />
+        {% endfor %}
+      </div>
+      <div class="col m-3 p-2">
+        {{ sauceFormSet.management_form }} {% for sauce in sauceFormSet %} {{
+        sauce.id }} {{ sauce | crispy }}
+        <hr />
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 
-        
-
-                
-     
-                
-
-
-        <input type="submit" value="add">
+  <input type="submit" value="add" />
 </form>
 
-
 {% endblock content %}
-    
